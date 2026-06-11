@@ -1,0 +1,106 @@
+{
+  "generated_at": "2026-06-11T08:36:39.817773+00:00",
+  "keywords": [
+    "business correspondent",
+    "banking correspondent",
+    "bc",
+    "financial inclusion",
+    "corporate bc",
+    "aeps",
+    "micro atm",
+    "micro-atm",
+    "dmt",
+    "domestic money transfer",
+    "aadhaar enabled payment",
+    "merchant acquisition",
+    "merchant onboarding",
+    "qr deployment",
+    "qr code",
+    "pos deployment",
+    "point of sale",
+    "soundbox",
+    "sound box",
+    "cash management service",
+    "cash management services",
+    "cms",
+    "cash collection service",
+    "cash pickup",
+    "api integration",
+    "technology service provider",
+    "fintech",
+    "digital banking",
+    "core banking",
+    "loan sourcing",
+    "insurance distribution",
+    "corporate agent",
+    "bancassurance"
+  ],
+  "services": [
+    "Business Correspondent Services",
+    "AEPS",
+    "DMT",
+    "QR Deployment",
+    "Soundbox Deployment",
+    "POS Deployment",
+    "CMS",
+    "API Integration",
+    "Loan Sourcing",
+    "Insurance Distribution"
+  ],
+  "results": [
+    {
+      "source": "SBI",
+      "url": "https://sbi.bank.in/web/sbi-in-the-news/procurement-news/archived-tenders",
+      "status": "not_yet_run",
+      "tenders": []
+    },
+    {
+      "source": "SBI - Current Procurement News",
+      "url": "https://sbi.bank.in/web/sbi-in-the-news/procurement-news",
+      "status": "not_yet_run",
+      "tenders": []
+    },
+    {
+      "source": "Bank of Baroda",
+      "url": "https://www.bankofbaroda.in/tenders",
+      "status": "not_yet_run",
+      "tenders": []
+    },
+    {
+      "source": "NABARD",
+      "url": "https://www.nabard.org/tenders.aspx",
+      "status": "not_yet_run",
+      "tenders": []
+    },
+    {
+      "source": "SIDBI",
+      "url": "https://www.sidbi.in/en/tenders",
+      "status": "not_yet_run",
+      "tenders": []
+    },
+    {
+      "source": "Punjab National Bank",
+      "url": "https://www.pnbindia.in/Tenders.html",
+      "status": "not_yet_run",
+      "tenders": []
+    },
+    {
+      "source": "Canara Bank",
+      "url": "https://canarabank.com/Tenders",
+      "status": "not_yet_run",
+      "tenders": []
+    },
+    {
+      "source": "Bank of India",
+      "url": "https://bankofindia.co.in/tenders",
+      "status": "not_yet_run",
+      "tenders": []
+    },
+    {
+      "source": "Union Bank of India",
+      "url": "https://www.unionbankofindia.co.in/english/tenders.aspx",
+      "status": "not_yet_run",
+      "tenders": []
+    }
+  ]
+}

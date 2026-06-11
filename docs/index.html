@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tender Radar — Daily BFSI Opportunity Tracker</title>
+<style>
+  :root {
+    --bg: #0f1720;
+    --panel: #16212e;
+    --panel-border: #25333f;
+    --text: #e7edf3;
+    --muted: #8a9bab;
+    --accent: #ffb454;
+    --accent-dim: #4a3a22;
+    --ok: #4caf7d;
+    --fail: #e0654f;
+    --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    --sans: 'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.5;
+  }
+  header {
+    border-bottom: 1px solid var(--panel-border);
+    padding: 28px clamp(16px, 4vw, 48px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .brand {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .brand .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .brand h1 {
+    margin: 0;
+    font-size: clamp(24px, 4vw, 34px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .meta-strip {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    text-align: right;
+  }
+  .stats {
+    display: flex;
+    gap: 12px;
+    padding: 20px clamp(16px, 4vw, 48px);
+    flex-wrap: wrap;
+  }
+  .stat {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 10px;
+    padding: 14px 20px;
+    min-width: 140px;
+  }
+  .stat .num {
+    font-family: var(--mono);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .stat .label {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 2px;
+  }
+  main {
+    padding: 8px clamp(16px, 4vw, 48px) 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .keywords-box {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .keywords-box strong { color: var(--text); }
+  .keywords-box .kwlist { font-family: var(--mono); color: var(--accent); }
+  h2.section-title {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    border-bottom: 1px solid var(--panel-border);
+    padding-bottom: 10px;
+    margin: 36px 0 16px;
+  }
+  .source-block {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+  }
+  .source-failed { border-color: rgba(224,101,79,0.35); }
+  .source-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .source-head h3 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .badge {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .badge-ok { background: rgba(76,175,125,0.15); color: var(--ok); border: 1px solid rgba(76,175,125,0.35); }
+  .badge-empty { background: rgba(138,155,171,0.1); color: var(--muted); border: 1px solid var(--panel-border); }
+  .badge-fail { background: rgba(224,101,79,0.15); color: var(--fail); border: 1px solid rgba(224,101,79,0.35); }
+  .source-link {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    font-family: var(--mono);
+  }
+  .source-link:hover { color: var(--accent); }
+  .muted { color: var(--muted); font-size: 13px; }
+  .muted a { color: var(--muted); }
+  table.tender-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .tender-table thead th {
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 600;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--panel-border);
+  }
+  .tender-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--panel-border);
+    vertical-align: top;
+  }
+  .tender-table tr:last-child td { border-bottom: none; }
+  .col-title { width: 50%; }
+  .col-meta { width: 15%; font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
+  .col-docs { width: 20%; }
+  .title-text { font-weight: 500; margin-bottom: 6px; }
+  .services-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; }
+  .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--accent-dim);
+    color: var(--accent);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .tag-muted { background: rgba(138,155,171,0.1); color: var(--muted); }
+  .kw-row { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .doc-link {
+    display: block;
+    font-size: 12px;
+    color: var(--accent);
+    text-decoration: none;
+    margin-bottom: 4px;
+    word-break: break-word;
+  }
+  .doc-link:hover { text-decoration: underline; }
+  .quick-search a.doc-link { font-size: 13px; margin-top: 6px; }
+  footer {
+    padding: 24px clamp(16px, 4vw, 48px) 48px;
+    color: var(--muted);
+    font-size: 12px;
+    font-family: var(--mono);
+    border-top: 1px solid var(--panel-border);
+  }
+  @media (max-width: 720px) {
+    .tender-table thead { display: none; }
+    .tender-table tr { display: block; padding: 10px 0; border-bottom: 1px solid var(--panel-border); }
+    .tender-table td { display: block; border: none; padding: 4px 0; width: 100% !important; }
+    .col-meta::before { content: attr(data-label) ': '; color: var(--muted); }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <span class="eyebrow">Tender Radar</span>
+    <h1>Daily BFSI Opportunity Tracker</h1>
+  </div>
+  <div class="meta-strip">
+    Last run: 11 Jun 2026, 08:36 UTC<br>
+    Sources checked: 0 ok / 9 failed
+  </div>
+</header>
+
+<div class="stats">
+  <div class="stat"><div class="num">0</div><div class="label">Matching tenders</div></div>
+  <div class="stat"><div class="num">0</div><div class="label">Sources reachable</div></div>
+  <div class="stat"><div class="num">10</div><div class="label">Service lines tracked</div></div>
+</div>
+
+<main>
+  <div class="keywords-box">
+    <strong>Keyword filters:</strong> <span class="kwlist">business correspondent, banking correspondent, bc, financial inclusion, corporate bc, aeps, micro atm, micro-atm, dmt, domestic money transfer, aadhaar enabled payment, merchant acquisition, merchant onboarding, qr deployment, qr code, pos deployment, point of sale, soundbox, sound box, cash management service, cash management services, cms, cash collection service, cash pickup, api integration, technology service provider, fintech, digital banking, core banking, loan sourcing, insurance distribution, corporate agent, bancassurance</span><br>
+    Edit <code>config.py</code> to add/remove keywords or sources, then re-run the scraper.
+  </div>
+
+  <h2 class="section-title">Bank &amp; Institution Tender Pages (auto-scanned)</h2>
+  
+            <section class="source-block">
+              <div class="source-head">
+                <h3>SBI</h3>
+                <span class="badge badge-empty">not yet run</span>
+              </div>
+              <p class="muted">Run <code>python scrapers/run.py</code> to fetch this source. Page: <a href="https://sbi.bank.in/web/sbi-in-the-news/procurement-news/archived-tenders" target="_blank" rel="noopener">https://sbi.bank.in/web/sbi-in-the-news/procurement-news/archived-tenders</a></p>
+            </section>
+
+            <section class="source-block">
+              <div class="source-head">
+                <h3>SBI - Current Procurement News</h3>
+                <span class="badge badge-empty">not yet run</span>
+              </div>
+              <p class="muted">Run <code>python scrapers/run.py</code> to fetch this source. Page: <a href="https://sbi.bank.in/web/sbi-in-the-news/procurement-news" target="_blank" rel="noopener">https://sbi.bank.in/web/sbi-in-the-news/procurement-news</a></p>
+            </section>
+
+            <section class="source-block">
+              <div class="source-head">
+                <h3>Bank of Baroda</h3>
+                <span class="badge badge-empty">not yet run</span>
+              </div>
+              <p class="muted">Run <code>python scrapers/run.py</code> to fetch this source. Page: <a href="https://www.bankofbaroda.in/tenders" target="_blank" rel="noopener">https://www.bankofbaroda.in/tenders</a></p>
+            </section>
+
+            <section class="source-block">
+              <div class="source-head">
+                <h3>NABARD</h3>
+                <span class="badge badge-empty">not yet run</span>
+              </div>
+              <p class="muted">Run <code>python scrapers/run.py</code> to fetch this source. Page: <a href="https://www.nabard.org/tenders.aspx" target="_blank" rel="noopener">https://www.nabard.org/tenders.aspx</a></p>
+            </section>
+
+            <section class="source-block">
+              <div class="source-head">
+                <h3>SIDBI</h3>
+                <span class="badge badge-empty">not yet run</span>
+              </div>
+              <p class="muted">Run <code>python scrapers/run.py</code> to fetch this source. Page: <a href="https://www.sidbi.in/en/tenders" target="_blank" rel="noopener">https://www.sidbi.in/en/tenders</a></p>
+            </section>
+
+            <section class="source-block">
+              <div class="source-head">
+                <h3>Punjab National Bank</h3>
+                <span class="badge badge-empty">not yet run</span>
+              </div>
+              <p class="muted">Run <code>python scrapers/run.py</code> to fetch this source. Page: <a href="https://www.pnbindia.in/Tenders.html" target="_blank" rel="noopener">https://www.pnbindia.in/Tenders.html</a></p>
+            </section>
+
+            <section class="source-block">
+              <div class="source-head">
+                <h3>Canara Bank</h3>
+                <span class="badge badge-empty">not yet run</span>
+              </div>
+              <p class="muted">Run <code>python scrapers/run.py</code> to fetch this source. Page: <a href="https://canarabank.com/Tenders" target="_blank" rel="noopener">https://canarabank.com/Tenders</a></p>
+            </section>
+
+            <section class="source-block">
+              <div class="source-head">
+                <h3>Bank of India</h3>
+                <span class="badge badge-empty">not yet run</span>
+              </div>
+              <p class="muted">Run <code>python scrapers/run.py</code> to fetch this source. Page: <a href="https://bankofindia.co.in/tenders" target="_blank" rel="noopener">https://bankofindia.co.in/tenders</a></p>
+            </section>
+
+            <section class="source-block">
+              <div class="source-head">
+                <h3>Union Bank of India</h3>
+                <span class="badge badge-empty">not yet run</span>
+              </div>
+              <p class="muted">Run <code>python scrapers/run.py</code> to fetch this source. Page: <a href="https://www.unionbankofindia.co.in/english/tenders.aspx" target="_blank" rel="noopener">https://www.unionbankofindia.co.in/english/tenders.aspx</a></p>
+            </section>
+
+  <h2 class="section-title">Government e-Procurement (manual search required)</h2>
+  
+        <section class="source-block quick-search">
+          <div class="source-head"><h3>GeM (Government e-Marketplace)</h3></div>
+          <p class="muted">GeM blocks automated scraping. Bids matching your registered categories appear directly in your seller dashboard. Use the search portal for manual checks.</p>
+          <a class="doc-link" href="https://bidplus.gem.gov.in/all-bids" target="_blank" rel="noopener">Open GeM Bid Search &rarr;</a>
+        </section>
+        <section class="source-block quick-search">
+          <div class="source-head"><h3>CPPP / eProcure</h3></div>
+          <p class="muted">Central Public Procurement Portal requires an active session for search. Use the link below to search manually with your keywords.</p>
+          <a class="doc-link" href="https://eprocure.gov.in/cppp/latestactivetendersnew/cpppdata" target="_blank" rel="noopener">Open CPPP Tender Search &rarr;</a>
+        </section>
+</main>
+
+<footer>
+  Generated by Tender Radar &mdash; static dashboard, no server required.
+  Run <code>python scrapers/run.py</code> to refresh, or schedule via GitHub Actions.
+</footer>
+</body>
+</html>
