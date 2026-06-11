@@ -14,8 +14,8 @@ can bookmark and check daily.
   (`config.py` → `KEYWORDS`)
 - **Classifies** matches by which of your services they relate to
   (`config.py` → `SERVICES`)
-- **Outputs** `data/tenders.json` (raw data) and `docs/index.html`
-  (the dashboard — open this in any browser)
+- **Outputs** `data/tenders.json` (raw data) which the `index.html` 
+  dashboard automatically loads and displays — open this in any browser!
 - For **GeM and CPPP/eProcure**, which block automated scraping, the
   dashboard shows direct links to search those portals manually —
   GeM tenders matching your registered seller categories will also
@@ -38,7 +38,7 @@ access** — your laptop, a small server, or for free: GitHub Actions.
    pip install -r requirements.txt
    python scrapers/run.py
    ```
-3. Open `docs/index.html` in your browser. That's your dashboard.
+3. Open `index.html` in your browser. That's your dashboard.
 4. Re-run `python scrapers/run.py` whenever you want fresh data
    (e.g. once a day).
 

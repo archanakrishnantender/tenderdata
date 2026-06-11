@@ -1,0 +1,45 @@
+name: Daily Tender Scrape
+
+on:
+  schedule:
+    # Runs at 03:00 UTC every day (~08:30 AM IST)
+    - cron: '0 3 * * *'
+  workflow_dispatch: # Allows manual trigger from the GitHub Actions tab
+
+permissions:
+  contents: write # Needed to commit the scraped data back to the repo
+  pages: write
+  id-token: write
+
+jobs:
+  scrape-and-publish:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Scraper
+        run: python scrapers/run.py
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload entire repository (which includes the frontend and data/tenders.json)
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

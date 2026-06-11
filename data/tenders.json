@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T08:36:39.817773+00:00",
+  "generated_at": "2026-06-11T09:36:50.220277+00:00",
   "keywords": [
     "business correspondent",
     "banking correspondent",
@@ -51,55 +51,115 @@
     {
       "source": "SBI",
       "url": "https://sbi.bank.in/web/sbi-in-the-news/procurement-news/archived-tenders",
-      "status": "not_yet_run",
-      "tenders": []
+      "status": "ok",
+      "total_items_scanned": 588,
+      "tenders": [
+        {
+          "title": "DEL/RBO-1/AO2/JW/FUR-01: INTERIOR FURNISHING WORK FOR SBI DIGITAL BANKING UNIT, DJB JHADEWALLAN, NEW DELHI",
+          "date": "14-Mar-2026 - 24-Mar-2026",
+          "links": [
+            {
+              "label": "NOTICE INVITING TENDER(1MB)",
+              "url": "https://sbi.bank.in/documents/39129/51516783/NOTICE+INVITING+TENDER20260316054613143.pdf"
+            }
+          ],
+          "location": "LHO, NEW DELHI",
+          "matched_keywords": [
+            "digital banking"
+          ],
+          "relevant_services": [
+            "API Integration"
+          ]
+        },
+        {
+          "title": "DEL/RBO-1/JW/ELECT-01: ELECTRICAL WORK FOR SBI DIGITAL BANKING UNIT, DJB JHADEWALLAN, NEW DELHI",
+          "date": "14-Mar-2026 - 24-Mar-2026",
+          "links": [
+            {
+              "label": "NOTICE INVITING TENDER(500KB)",
+              "url": "https://sbi.bank.in/documents/39129/51516783/NOTICE+INVITING+TENDER20260316054711560.pdf"
+            }
+          ],
+          "location": "LHO, NEW DELHI",
+          "matched_keywords": [
+            "digital banking"
+          ],
+          "relevant_services": [
+            "API Integration"
+          ]
+        },
+        {
+          "title": "DEL/RBO 1/JW/AC: HVAC WORK FOR SBI DIGITAL BANKING UNIT, DJB JHADEWALLAN, NEW DELHI",
+          "date": "14-Mar-2026 - 24-Mar-2026",
+          "links": [
+            {
+              "label": "NOTICE INVITING TENDER(869KB)",
+              "url": "https://sbi.bank.in/documents/39129/51516783/NOTICE+INVITING+TENDER20260316054756121.pdf"
+            }
+          ],
+          "location": "LHO, NEW DELHI",
+          "matched_keywords": [
+            "digital banking"
+          ],
+          "relevant_services": [
+            "API Integration"
+          ]
+        }
+      ]
     },
     {
       "source": "SBI - Current Procurement News",
       "url": "https://sbi.bank.in/web/sbi-in-the-news/procurement-news",
-      "status": "not_yet_run",
+      "status": "ok",
+      "total_items_scanned": 689,
       "tenders": []
     },
     {
       "source": "Bank of Baroda",
       "url": "https://www.bankofbaroda.in/tenders",
-      "status": "not_yet_run",
+      "status": "ok",
+      "total_items_scanned": 5,
       "tenders": []
     },
     {
       "source": "NABARD",
       "url": "https://www.nabard.org/tenders.aspx",
-      "status": "not_yet_run",
+      "status": "ok",
+      "total_items_scanned": 3,
       "tenders": []
     },
     {
       "source": "SIDBI",
       "url": "https://www.sidbi.in/en/tenders",
-      "status": "not_yet_run",
+      "status": "ok",
+      "total_items_scanned": 1,
       "tenders": []
     },
     {
       "source": "Punjab National Bank",
       "url": "https://www.pnbindia.in/Tenders.html",
-      "status": "not_yet_run",
+      "status": "ok",
+      "total_items_scanned": 5,
       "tenders": []
     },
     {
       "source": "Canara Bank",
       "url": "https://canarabank.com/Tenders",
-      "status": "not_yet_run",
+      "status": "ok",
+      "total_items_scanned": 0,
       "tenders": []
     },
     {
       "source": "Bank of India",
       "url": "https://bankofindia.co.in/tenders",
-      "status": "not_yet_run",
+      "status": "fetch_failed",
       "tenders": []
     },
     {
       "source": "Union Bank of India",
       "url": "https://www.unionbankofindia.co.in/english/tenders.aspx",
-      "status": "not_yet_run",
+      "status": "ok",
+      "total_items_scanned": 1,
       "tenders": []
     }
   ]

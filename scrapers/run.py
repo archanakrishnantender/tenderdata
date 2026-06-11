@@ -162,12 +162,6 @@ def run():
         json.dump(output, f, indent=2, ensure_ascii=False)
     print(f"\nWrote {config.OUTPUT_JSON}")
 
-    # Generate dashboard HTML
-    from scrapers.render_dashboard import render
-    os.makedirs(os.path.dirname(config.OUTPUT_HTML), exist_ok=True)
-    render(output, config.OUTPUT_HTML)
-    print(f"Wrote {config.OUTPUT_HTML}")
-
 
 if __name__ == "__main__":
     run()
