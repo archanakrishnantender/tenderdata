@@ -2,8 +2,8 @@ name: Daily Tender Scrape
 
 on:
   schedule:
-    # Runs at 03:00 UTC every day (~08:30 AM IST)
-    - cron: '0 3 * * *'
+
+    - cron: '0 1-23/3 * * *'
   workflow_dispatch: # Allows manual trigger from the GitHub Actions tab
 
 permissions:
